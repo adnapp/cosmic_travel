@@ -1,0 +1,13 @@
+<h1>About <%=@scientist.name%> </h1>
+
+<p>Field of Study: <%= @scientist.field_of_study%> </p>
+
+<p>Planets Visited:</p>
+<ul>
+<% @scientist.missions.each do |mission| %>
+<li><%= "#{mission.planet.name} : #{mission.name} Mission"%></li>
+<%end %>
+</ul>
+
+ <%= link_to 'See ALL scientists', scientists_path %><br>
+  <%= link_to 'Edit scientist', edit_scientist_path(@scientist) %>

@@ -1,0 +1,11 @@
+<h1>List of all Scientists</h1>
+
+<ul>
+<% @scientists.each do |scientist|%>
+<li><%= link_to scientist.name, scientist_path(scientist) %></li>
+<%end%>
+</ul>
+
+<br><br>
+
+<%=  link_to 'Create NEW Scientist', new_scientist_path %>
