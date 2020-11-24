@@ -1,10 +1,13 @@
 class ScientistsController < ApplicationController
+    before_action :find_scientist, only: [:show, :edit, :update, :destroy]
+
+    
     def index
       @scientists = Scientist.all
     end
 
     def show
-        @scientist = Scientist.find(params[:id])
+        # @scientist = Scientist.find(params[:id])
     end
 
     def new
@@ -22,12 +25,12 @@ class ScientistsController < ApplicationController
     end
 
     def edit
-        @scientist = Scientist.find(params[:id])
+        # @scientist = Scientist.find(params[:id])
     end
 
     def update 
         
-        @scientist = Scientist.find(params[:id])
+        # @scientist = Scientist.find(params[:id])
         
         if @scientist.update(scientist_params)
             redirect_to scientist_path(@scientist)
@@ -38,7 +41,7 @@ class ScientistsController < ApplicationController
     end
 
     def destroy
-        @scientist = Scientist.find(params[:id])
+        # @scientist = Scientist.find(params[:id])
         @scientist.destroy
         redirect_to scientists_path
     end
@@ -48,5 +51,9 @@ class ScientistsController < ApplicationController
     private
     def scientist_params
        params.require(:scientist).permit(:name, :field_of_study) 
+    end
+
+    def find_scientist
+        @scientist = Scientist.find(params[:id])
     end
 end
